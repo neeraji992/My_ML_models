@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+    <div class="container">
+        <form action="/recommend" method="POST" id="recommendForm">
+            <label for="movie_title">Select a Movie:</label>
+            <select id="movie_title" name="movie_title" required>
+                {% for movie in movies %}
+                <option value="{{ movie }}">{{ movie }}</option>
+                {% endfor %}
+            </select><br><br>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+    <div id="recommendations">
+        <h2>Recommendations:</h2>
+        <ul id="recommendationsList"></ul>
+    </div>
+    <script>
+        document.getElementById('recommendForm').submit = async function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const response = await fetch('/recommend', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            const recommendationsList = document.getElementById('recommendationsList');
+            recommendationsList.innerHTML = ''; // Clear existing recommendations
+            if (data.error) {
+                recommendationsList.innerHTML = `<li>${data.error}</li>`;
+            } else {
+                data.recommendations.forEach(movie => {
+                    const li = document.createElement('li');
+                    li.textContent = movie;
+                    recommendationsList.appendChild(li);
+                });
+            }
+        };
+    </script>
+</body>
+</html>
