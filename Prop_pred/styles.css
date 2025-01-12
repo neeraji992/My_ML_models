@@ -1,0 +1,81 @@
+/* Reset default margins and padding */
+body, h1, h2, form, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../static/images/house.jpg");
+    background-size: cover; /* Makes the image cover the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color for contrast */
+}
+
+/* Main heading styling */
+#mainheading {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+    position: absolute;
+    top: 20px; /* Keep it at the top */
+    text-align: center;
+    width: 100%; /* Center align within the viewport */
+}
+
+/* Container styling */
+.container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+/* Form label styling */
+label {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Input fields */
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button styling */
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Prediction text styling */
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
